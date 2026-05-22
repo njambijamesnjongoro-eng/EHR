@@ -1,0 +1,50 @@
+from django.contrib import admin
+from django.urls import path, include
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("api/auth/", include("api.authentication.urls")),
+    path("api/patients/", include("api.patients.urls")),
+    path("api/audit/", include("api.audit.urls")),
+    path("api/clinical/", include("api.clinical.urls")),
+    path("api/labs/", include("api.labs.urls")),
+    path("api/timeline/", include("api.timeline.urls")),
+    path("api/admissions/", include("api.admissions.urls")),
+    path("api/billing/", include("api.billing.urls")),
+    path("api/imaging/", include("api.imaging.urls")),
+    path("api/notifications/", include("api.notifications.urls")),
+    path("api/reports/", include("api.reports.urls")),
+    path("api/hospitals/", include("api.hospitals.urls")),
+    path("api/referrals/", include("api.referrals.urls")),
+    path("api/sync/", include("api.sync.urls")),
+    path("api/analytics/", include("api.analytics.urls")),
+    path("api/insurance/", include("api.insurance.urls")),
+    path("api/telemedicine/", include("api.telemedicine.urls")),
+    path("api/security/", include("api.security.urls")),
+    path("api/monitoring/", include("api.monitoring.urls")),
+    path("api/compliance/", include("api.compliance.urls")),
+    path("api/interop/", include("api.interop.urls")),
+    path("api/ai/", include("api.ai_assist.urls")),
+    path("api/public-health/", include("api.public_health.urls")),
+    path("api/wearable/", include("api.wearable.urls")),
+    path("api/biometric/", include("api.biometric.urls")),
+    path("api/smart-hospital/", include("api.smart_hospital.urls")),
+    path("api/citizen-portal/", include("api.citizen_portal.urls")),
+    # Phase 7
+    path("api/ai-orchestrator/", include("api.ai_orchestrator.urls")),
+    path("api/epidemic/", include("api.epidemic.urls")),
+    path("api/precision-health/", include("api.precision_health.urls")),
+    path("api/data-fabric/", include("api.health_data_fabric.urls")),
+    # Phase 8
+    path("api/digital-twin/", include("api.digital_twin.urls")),
+    path("api/emergency/", include("api.emergency_response.urls")),
+    path("api/population-health/", include("api.population_health.urls")),
+    path("api/ai-governance/", include("api.ai_orchestration.urls")),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path(
+        "api/docs/",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
+]
